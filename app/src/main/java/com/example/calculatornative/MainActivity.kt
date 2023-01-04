@@ -48,6 +48,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun removeZeroAfterDot(result: String) : String{
+        var value = result
+        if(result.contains(".0")){
+            value = result.substring(0, result.length - 2)
+        }
+        return value
+    }
+
     fun onEqual(view: View){
         if(lastNumeric){
             var tvValue = tvInput?.text.toString()
@@ -66,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                     if(prefix.isNotEmpty()){
                         one = prefix + one
                     }
-                    tvInput?.text = (one.toDouble() - two.toDouble()).toString()
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() - two.toDouble()).toString())
                 } else if(tvValue.contains("+")){
                     val splitValue = tvValue.split("+")
                     var one = splitValue[0]
@@ -75,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                     if(prefix.isNotEmpty()){
                         one = prefix + one
                     }
-                    tvInput?.text = (one.toDouble() + two.toDouble()).toString()
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() + two.toDouble()).toString())
                 } else if(tvValue.contains("x")){
                     val splitValue = tvValue.split("x")
                     var one = splitValue[0]
@@ -84,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                     if(prefix.isNotEmpty()){
                         one = prefix + one
                     }
-                    tvInput?.text = (one.toDouble() * two.toDouble()).toString()
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() * two.toDouble()).toString())
                 } else if(tvValue.contains("/")){
                     val splitValue = tvValue.split("/")
                     var one = splitValue[0]
@@ -93,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                     if(prefix.isNotEmpty()){
                         one = prefix + one
                     }
-                    tvInput?.text = (one.toDouble() / two.toDouble()).toString()
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() / two.toDouble()).toString())
                 }
 
 
