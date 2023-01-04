@@ -66,9 +66,34 @@ class MainActivity : AppCompatActivity() {
                     if(prefix.isNotEmpty()){
                         one = prefix + one
                     }
-
-
                     tvInput?.text = (one.toDouble() - two.toDouble()).toString()
+                } else if(tvValue.contains("+")){
+                    val splitValue = tvValue.split("+")
+                    var one = splitValue[0]
+                    var two = splitValue[1]
+
+                    if(prefix.isNotEmpty()){
+                        one = prefix + one
+                    }
+                    tvInput?.text = (one.toDouble() + two.toDouble()).toString()
+                } else if(tvValue.contains("x")){
+                    val splitValue = tvValue.split("x")
+                    var one = splitValue[0]
+                    var two = splitValue[1]
+
+                    if(prefix.isNotEmpty()){
+                        one = prefix + one
+                    }
+                    tvInput?.text = (one.toDouble() * two.toDouble()).toString()
+                } else if(tvValue.contains("/")){
+                    val splitValue = tvValue.split("/")
+                    var one = splitValue[0]
+                    var two = splitValue[1]
+
+                    if(prefix.isNotEmpty()){
+                        one = prefix + one
+                    }
+                    tvInput?.text = (one.toDouble() / two.toDouble()).toString()
                 }
 
 
